@@ -3,7 +3,7 @@ MinimaJS
 
 MinimaJS is an MVC-like Javascript framework that focuses on testability and maintainability.
 
-Why use it?:
+Why use it?
 
   - It's lightweight, only 5.8 kB including all hard dependencies.
   - The architecture is designed to allow a high grade of testability
