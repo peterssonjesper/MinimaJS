@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Todo</title>
+		<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link type="text/css" rel="stylesheet" href="../todo_app/css/style.css" />
+		<link type="text/css" rel="stylesheet" href="../libs/qunit/qunit.css" />
+
+		<!-- Needed by the todo module -->
+		<script type="text/javascript" src="../libs/jquery.js"></script> 
+		<script type="text/javascript" src="../libs/underscore.js"></script>
+
+		<!-- The framework -->
+		<script type="text/javascript" src="../minimajs.min.js"></script>
+
+		<!-- The application -->
+		<script type="text/javascript" src="../todo_app/js/app.js"></script>
+		<script type="text/javascript" src="../todo_app/js/router.js"></script>
+		<script type="text/javascript" src="../todo_app/js/config.js"></script>
+		<script type="text/javascript" src="../todo_app/js/modules/todo.js"></script>
+
+		<!-- The test framework and unit tests -->
+		<script type="text/javascript" src="../libs/qunit/qunit.js"></script>
+		<script type="text/javascript" src="todo.js"></script>
+
+	</head>
+
+	<body>
+
+		<div id="content"></div>
+		<div id="qunit"></div>
+
+		<script type="plain/text" id="todo-main-view">
+			<div class="header">
+				<h1>Todo</h1>
+			</div>
+			<div id="listheader"></div>
+			<div id="add">
+				<div class="<%= left() === 0 ? 'allchecked' : ''%>" id="checkall"></div>
+				<input type="text" placeholder="What needs to be done?" />
+			</div>
+			<ul id="list"></ul>
+			<div id="footer"></div>
+		</script>
+
+		<script type="plain/text" id="todo-footer-view">
+			<div class="footer-head"></div>
+			<div class="footer-content">
+				<%= left() %> item<%= left() === 1 ? '' : 's'%> left
+				<% if(total()-left() > 0) { %>
+					<button>Clear completed (<%= total()-left() %>)</button>
+				<% } %>
+			</div>
+		</script>
+	
+		<script type="plain/text" id="todo-list-item">
+			<div class="check <%=todoItem.get('done') ? 'checked' : ''%>"></div>
+			<div class="label"><%= todoItem.get('label') %></div>
+			<div class="rm"></div>
+		</script>
+
+		<script type="plain/text" id="todo-edit-list-item">
+			<input type="text" value="<%=todoItem.get('label')%>" />
+		</script>
+
+	</body>
+</html>
